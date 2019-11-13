@@ -1,4 +1,7 @@
 # Contributer: chewie lin
+# From http://www.linuxfromscratch.org/blfs/view/svn/general/ibus.html
+# template ibus-lite
+# https://aur.archlinux.org/packages/ibus-lite/
 
 pkgname=ibus-lite
 pkgname=ibus
