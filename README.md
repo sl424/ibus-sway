@@ -1,9 +1,11 @@
 # ibus-sway
-minimal ibus AUR build for sway (wayland)
-The ibus input switch key and ibus panel did not work for me in sway, so I only installed
-the only the base with wayland support without python2 dependency(ibus-setup broken).
 
-to launch ibus without panel:
+Minimal ibus AUR build for sway 
+
+The ibus input switch key and ibus panel did not work for me in sway, so I only installed
+the base with wayland support without python2 dependency(broken ibus-setup).
+
+To launch ibus without panel:
 
 	ibus-daemon -drx --panel=disable
 
@@ -30,6 +32,17 @@ direct.json example:
 	    }
 	  }
 	}
+
+In order to get ibus-setup to work, you need to install gi from your repo:
+
+	gobject-introspection    # describe the program APIs 
+
+and from python:
+
+	pygobject                # python binding for gi
+	pyxdg                    # python library to access freedesktop.org standards. 
+
+Or just install the default ibus with python2 and ignore all of this.
 
 
 ## ibus-sway build options
