@@ -1,24 +1,24 @@
 # ibus-sway
 minimal ibus AUR build for sway (wayland)
-The ibus input switch key and ibus panel did not work for me anyway, so I disabled them in
-this minimal build.
+The ibus input switch key and ibus panel did not work for me in sway, so I only installed
+the only the base with wayland support without python2 dependency(ibus-setup broken).
 
-launch ibus without panel:
+to launch ibus without panel:
 
 	ibus-daemon -drx --panel=disable
 
-you can switch engine by:
+you can switch engine in command line or bind them to different keys:
 
 	ibus engine xkb:es::spa
 	ibus engine xkb:us::eng
-	ibus engine kkc #require ibus-kkc
+	ibus engine kkc ## require "ibus-kkc" "gtk3"
 
 Optional: for ibus-kkc, you can also add additional key to swtich between hiragana and direct input:
 
 	vim .config/ibus-kkc/rules/default/keymap/direct.json
 	vim .config/ibus-kkc/rules/default/keymap/hiragana.json
 
-like this:
+direct.json example:
 
 	{
 	  "include" : [
@@ -30,6 +30,7 @@ like this:
 	    }
 	  }
 	}
+
 
 ## ibus-sway build options
 
