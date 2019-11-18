@@ -4,14 +4,13 @@
 # https://aur.archlinux.org/packages/ibus-lite/
 
 pkgname=ibus-lite
-pkgname=ibus
 pkgver=1.5.21
 pkgrel=1
 pkgdesc="ibus-daemon only"
 arch=('i686' 'x86_64')
 url="https://github.com/ibus/ibus/releases/download/1.5.21/ibus-1.5.21.tar.gz"
 license=('LGPL')
-depends=('libibus' 'gtk3' 'dconf' 'iso-codes')
+depends=('libibus' 'gtk3' 'dconf' 'libnotify' 'iso-codes' )
 makedepends=('vala')
 provides=("ibus=$pkgver")
 conflicts=('ibus')
@@ -29,6 +28,10 @@ prepare(){
 	wget https://www.unicode.org/Public/zipped/10.0.0/UCD.zip
 	sudo mkdir -p /usr/share/unicode/ucd && unzip -u UCD.zip -d /usr/share/unicode/ucd
 }
+    #--disable-appindicator \
+    #--disable-ui \
+    #--disable-gtk3 \
+    #--disable-gtk2 \
 
 build() {
   cd "$srcdir/ibus-$pkgver"
@@ -38,13 +41,9 @@ build() {
     --sysconfdir=/etc \
     --enable-dconf \
     --enable-wayland \
-    --disable-ui \
+    --disable-python2 \
     --disable-python-library \
     --disable-emoji-dict \
-    --disable-gtk2 \
-    --disable-gtk3 \
-    --disable-python2 \
-    --disable-appindicator \
     --disable-memconf \
     --disable-gtk-doc &&
     rm -f tools/main.c &&
