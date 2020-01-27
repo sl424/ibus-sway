@@ -3,15 +3,15 @@
 # template ibus-lite
 # https://aur.archlinux.org/packages/ibus-lite/
 
-pkgname=ibus-lite
+pkgname=ibus-sway
 pkgver=1.5.21
 pkgrel=1
 pkgdesc="ibus-daemon only"
 arch=('i686' 'x86_64')
 url="https://github.com/ibus/ibus/releases/download/1.5.21/ibus-1.5.21.tar.gz"
 license=('LGPL')
-depends=('libibus' 'gtk3' 'dconf' 'libnotify' 'iso-codes' )
-makedepends=('vala')
+depends=('libibus' 'gtk3' 'dconf' 'libnotify' 'iso-codes' 'python-dbus' 'python-gobject')
+makedepends=('gobject-introspection' 'vala' 'unicode-character-database')
 provides=("ibus=$pkgver")
 conflicts=('ibus')
 replaces=('ibus')
@@ -24,14 +24,10 @@ prepare(){
 	cd "$srcdir/ibus-$pkgver"                   
 	sed -i 's@/desktop/ibus@/org/freedesktop/ibus@g' \
 		data/dconf/org.freedesktop.ibus.gschema.xml
-	# enable-unicode-dict 
-	wget https://www.unicode.org/Public/zipped/10.0.0/UCD.zip
-	sudo mkdir -p /usr/share/unicode/ucd && unzip -u UCD.zip -d /usr/share/unicode/ucd
 }
     #--disable-appindicator \
-    #--disable-ui \
     #--disable-gtk3 \
-    #--disable-gtk2 \
+    #--disable-ui \
 
 build() {
   cd "$srcdir/ibus-$pkgver"
@@ -41,7 +37,9 @@ build() {
     --sysconfdir=/etc \
     --enable-dconf \
     --enable-wayland \
+    --disable-gtk2 \
     --disable-python2 \
+	--with-python=python3 \
     --disable-python-library \
     --disable-emoji-dict \
     --disable-memconf \
