@@ -32,19 +32,6 @@ direct.json example:
 	  }
 	}
 
-In order to get ibus-setup to work, you need to install gi from your repo:
-
-	gobject-introspection    # describe the program APIs 
-
-and from python:
-
-	pygobject                # python binding for gi
-	pyxdg                    # python library to access freedesktop.org standards. 
-
-Or just install the default ibus with python2 and ignore all of this.
-Either way, ibus drop-down menu is buggy 
-
-
 ## ibus-sway build options
 
 

@@ -10,7 +10,7 @@ pkgdesc="ibus-daemon only"
 arch=('i686' 'x86_64')
 url="https://github.com/ibus/ibus/releases/download/1.5.21/ibus-1.5.21.tar.gz"
 license=('LGPL')
-depends=('libibus' 'gtk3' 'dconf' 'libnotify' 'iso-codes' 'python-dbus' 'python-gobject')
+depends=('libibus' 'gtk3' 'dconf' 'libnotify' 'iso-codes' 'python-dbus' 'python-gobject' 'python-xdg')
 makedepends=('gobject-introspection' 'vala' 'unicode-character-database')
 provides=("ibus=$pkgver")
 conflicts=('ibus')
